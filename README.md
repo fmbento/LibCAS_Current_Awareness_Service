@@ -9,6 +9,12 @@
 [![Express](https://img.shields.io/badge/Express-4.21-000000?logo=express&logoColor=white)](https://expressjs.com/)
 
 ---
+<img width="835" height="512" alt="image" src="https://github.com/user-attachments/assets/2e6fc622-6076-480a-9ffb-69ae12c87362" />
+<img width="827" height="512" alt="image" src="https://github.com/user-attachments/assets/3773be75-3262-47bb-a3d5-2afe420dc8d7" />
+<img width="838" height="511" alt="image" src="https://github.com/user-attachments/assets/ff04a513-9073-4140-84ef-8f601fc204b9" />
+<img width="811" height="511" alt="image" src="https://github.com/user-attachments/assets/797de532-3f86-4a28-83d8-b3777116d6cd" />
+
+---
 
 ## Índice / Table of Contents
 
