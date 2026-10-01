@@ -32,7 +32,7 @@ export const BookTableView: React.FC<BookTableViewProps> = ({
         <table className="w-full border-collapse text-left text-xs">
           <thead>
             <tr className="bg-[#F7F4EE] border-b border-[#E7E3DC] text-[#57534E] font-medium">
-              <th className="py-3 px-3 w-10 text-center">
+              <th className="py-3 px-3 w-10 text-center no-print">
                 <button
                   type="button"
                   onClick={() => onSelectAll(!allSelected)}
@@ -57,7 +57,7 @@ export const BookTableView: React.FC<BookTableViewProps> = ({
               <th className="py-3 px-3">Ano / Ed.</th>
               <th className="py-3 px-3">Avaliação</th>
               <th className="py-3 px-3">Sumário</th>
-              <th className="py-3 px-3 text-right">Ações</th>
+              <th className="py-3 px-3 text-right no-print">Ações</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#EFECE6]">
@@ -76,7 +76,7 @@ export const BookTableView: React.FC<BookTableViewProps> = ({
                   }`}
                 >
                   {/* Select */}
-                  <td className="py-2.5 px-3 text-center">
+                  <td className="py-2.5 px-3 text-center no-print">
                     <input
                       type="checkbox"
                       checked={b.selectedForEmail}
@@ -212,7 +212,7 @@ export const BookTableView: React.FC<BookTableViewProps> = ({
                   </td>
 
                   {/* Actions */}
-                  <td className="py-2.5 px-3 text-right whitespace-nowrap">
+                  <td className="py-2.5 px-3 text-right whitespace-nowrap no-print">
                     <div className="flex items-center justify-end gap-1">
                       {onSearchWeb && (
                         <button

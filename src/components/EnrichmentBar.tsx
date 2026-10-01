@@ -35,7 +35,7 @@ export const EnrichmentBar: React.FC<EnrichmentBarProps> = ({
   const percent = totalCount > 0 ? Math.round((enrichedCount / totalCount) * 100) : 0;
 
   return (
-    <div className="bg-white border border-[#E7E3DC] rounded-xl p-4 shadow-xs space-y-3.5">
+    <div className="bg-white border border-[#E7E3DC] rounded-xl p-4 shadow-xs space-y-3.5 no-print">
       {/* Top row: Subject Title & Stats */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>

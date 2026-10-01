@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Upload, Mail, Sparkles, Plus } from 'lucide-react';
+import { BookOpen, Upload, Mail, Sparkles, Plus, Printer } from 'lucide-react';
 
 interface HeaderProps {
   onOpenImport: () => void;
@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({
   totalCount,
 }) => {
   return (
-    <header className="sticky top-0 z-30 bg-[#FCFAF6]/95 backdrop-blur-md border-b border-[#E7E3DC] px-6 py-3.5 transition-all">
+    <header className="sticky top-0 z-30 bg-[#FCFAF6]/95 backdrop-blur-md border-b border-[#E7E3DC] px-6 py-3.5 transition-all no-print">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
         {/* Zone 1: Brand Wordmark */}
@@ -111,6 +111,15 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Carregar Exemplo (BD)</span>
             </button>
           )}
+
+          <button
+            onClick={() => window.print()}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#1C1917] bg-[#EFECE6] hover:bg-[#E5E0D8] border border-[#D6D3CD] rounded-lg transition-all shadow-xs"
+            title="Imprimir catálogo em PDF (Ctrl+P / Cmd+P) com layout otimizado"
+          >
+            <Printer className="w-3.5 h-3.5 text-[#57534E]" />
+            <span className="hidden sm:inline">Imprimir / PDF</span>
+          </button>
 
           <button
             onClick={onOpenEmailBuilder}

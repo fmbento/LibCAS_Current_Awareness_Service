@@ -69,7 +69,7 @@ export const BookCard: React.FC<BookCardProps> = ({
 
   return (
     <article
-      className={`group relative bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
+      className={`group relative bg-white border rounded-xl overflow-hidden transition-all duration-200 book-card-item page-break-avoid ${
         book.selectedForEmail
           ? 'border-[#D6CEBE] shadow-xs ring-1 ring-[#9A3412]/15'
           : 'border-[#E7E3DC] opacity-75 hover:opacity-100 bg-[#FAFAF8]'
@@ -85,11 +85,11 @@ export const BookCard: React.FC<BookCardProps> = ({
               alt={`Capa de ${book.title}`}
               referrerPolicy="no-referrer"
               onError={() => setImgError(true)}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-102"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-102 book-cover-img"
               loading="lazy"
             />
             {book.enriched?.coverSource && (
-              <span className="absolute bottom-1 right-1 bg-black/75 backdrop-blur-xs text-white text-[9px] px-1.5 py-0.5 rounded font-mono font-medium">
+              <span className="absolute bottom-1 right-1 bg-black/75 backdrop-blur-xs text-white text-[9px] px-1.5 py-0.5 rounded font-mono font-medium no-print">
                 {book.enriched.coverSource === 'goodreads'
                   ? 'GoodReads'
                   : book.enriched.coverSource === 'google_books'
@@ -105,7 +105,7 @@ export const BookCard: React.FC<BookCardProps> = ({
           <button
             type="button"
             onClick={() => onToggleSelect(book.id)}
-            className={`w-full py-1 px-2 text-xs font-medium rounded-md border flex items-center justify-center gap-1.5 transition-colors ${
+            className={`w-full py-1 px-2 text-xs font-medium rounded-md border flex items-center justify-center gap-1.5 transition-colors no-print ${
               book.selectedForEmail
                 ? 'bg-[#1C1917] text-white border-[#1C1917]'
                 : 'bg-white text-[#78716C] border-[#D6D3CD] hover:border-[#1C1917] hover:text-[#1C1917]'
@@ -123,7 +123,7 @@ export const BookCard: React.FC<BookCardProps> = ({
             {/* Top metadata line: Shelfmark / Cota + Accession number + OPAC availability */}
             <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
               <div className="flex flex-wrap items-center gap-2">
-                <div className="flex items-center gap-2 text-xs font-mono text-[#1E3A8A] font-semibold bg-[#EFF6FF] px-2 py-0.5 rounded border border-[#DBEAFE]">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#1E3A8A] font-semibold bg-[#EFF6FF] px-2 py-0.5 rounded border border-[#DBEAFE] cota-badge">
                   <span>COTA:</span>
                   <span>{book.itemcallnumber || 'Balcão de Atendimento'}</span>
                   {book.biblionumber && (
@@ -143,13 +143,13 @@ export const BookCard: React.FC<BookCardProps> = ({
                     title="Ver disponibilidade em tempo real no Koha OPAC da Universidade de Aveiro"
                   >
                     <span>Ver disponibilidade</span>
-                    <ExternalLink className="w-2.5 h-2.5 text-[#15803D]" />
+                    <ExternalLink className="w-2.5 h-2.5 text-[#15803D] no-print" />
                   </a>
                 )}
               </div>
 
               {/* Status Indicator */}
-              <div className="flex items-center gap-2 text-xs text-[#78716C]">
+              <div className="flex items-center gap-2 text-xs text-[#78716C] status-badge no-print">
                 {book.status === 'enriching' ? (
                   <span className="text-[#D97706] flex items-center gap-1 animate-pulse">
                     <RefreshCw className="w-3 h-3 animate-spin" /> A consultar catálogos...
@@ -252,7 +252,7 @@ export const BookCard: React.FC<BookCardProps> = ({
                     type="button"
                     onClick={() => onSearchWeb(book)}
                     disabled={isWebSearching}
-                    className="text-[11px] text-[#9A3412] hover:text-[#782A0E] font-semibold flex items-center gap-1 transition-colors"
+                    className="text-[11px] text-[#9A3412] hover:text-[#782A0E] font-semibold flex items-center gap-1 transition-colors no-print"
                     title="Pesquisar sinopse na Wook, Bertrand, FNAC e sites de editoras"
                   >
                     <Globe className={`w-3 h-3 ${isWebSearching ? 'animate-spin' : ''}`} />
@@ -263,7 +263,7 @@ export const BookCard: React.FC<BookCardProps> = ({
 
               {summary ? (
                 <div>
-                  <p className="font-editorial text-[13px] text-[#38332E]">
+                  <p className="font-editorial text-[13px] text-[#38332E] book-synopsis">
                     {isExpanded || summary.length <= 260
                       ? summary
                       : `${summary.slice(0, 260)}...`}
@@ -272,7 +272,7 @@ export const BookCard: React.FC<BookCardProps> = ({
                     <button
                       type="button"
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="text-[11px] text-[#9A3412] hover:underline font-semibold mt-1"
+                      className="text-[11px] text-[#9A3412] hover:underline font-semibold mt-1 no-print"
                     >
                       {isExpanded ? 'Ver menos' : 'Ler sumário completo'}
                     </button>
@@ -281,7 +281,7 @@ export const BookCard: React.FC<BookCardProps> = ({
               ) : (
                 <div className="p-2.5 bg-[#FAF7F2] border border-dashed border-[#E2DDD5] rounded-md text-[#78716C] italic text-[11px] flex flex-wrap items-center justify-between gap-2">
                   <span>Sinopse ainda não obtida para este ISBN.</span>
-                  <div className="flex items-center gap-2 not-italic">
+                  <div className="flex items-center gap-2 not-italic no-print">
                     {onSearchWeb && (
                       <button
                         type="button"
@@ -316,10 +316,10 @@ export const BookCard: React.FC<BookCardProps> = ({
           </div>
 
           {/* Bottom Card Actions & Footnote Links */}
-          <div className="pt-3 border-t border-[#F2EFE9] flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="pt-3 border-t border-[#F2EFE9] flex flex-wrap items-center justify-between gap-3 text-xs book-card-actions no-print">
             
             {/* Direct Portuguese Bookshop & Catalog Quick Links */}
-            <div className="flex flex-wrap items-center gap-1 text-[11px] text-[#57534E]">
+            <div className="flex flex-wrap items-center gap-1 text-[11px] text-[#57534E] book-quick-links">
               <span className="font-mono text-[10px] text-[#78716C] mr-1">
                 {isbnDisplay || 'Sem ISBN'}
               </span>
@@ -365,7 +365,7 @@ export const BookCard: React.FC<BookCardProps> = ({
             </div>
 
             {/* Card Action Buttons */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 no-print">
               <button
                 type="button"
                 onClick={() => onReEnrichSingle(book)}

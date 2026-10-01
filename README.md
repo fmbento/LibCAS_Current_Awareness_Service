@@ -85,6 +85,12 @@ O **LibCAS** (*Current Awareness Service*) é uma aplicação web concebida para
   - **Versão em Texto Simples**: Para mailing lists ou destinatários com leitores de texto puro.
   - Copiar com 1 clique para a área de transferência ou transferir ficheiro `.html`.
 
+- 🖨️ **Estilo Dedicado para Impressão & Exportação PDF (`@media print`)**:
+  - Vista limpa e sem ruído de interface: oculta automaticamente barras de navegação, botões de edição, pesquisas, filtros, botões de IA e caixas de seleção.
+  - Otimização para formato A4 com quebras de página controladas (`break-inside: avoid`), impedindo que registos fiquem cortados entre páginas.
+  - Cabeçalho institucional e rodapé de impressão automáticos com área temática, data de emissão e contagem de títulos.
+  - Botão de acesso rápido *"Imprimir / PDF"* no topo da aplicação (`Ctrl+P` / `Cmd+P`).
+
 - ✏️ **Edição e Gestão Manual**:
   - Vista em cartões visuais (Grelha) e vista em Tabela densa.
   - Edição individual de cada campo (capa via URL ou upload local de ficheiro, sinopse, cota, ano, editora, assuntos separados por vírgula).
@@ -264,6 +270,12 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
   - **"Copy Records Only" Option**: Copies just the formatted book table with dividing lines for pasting directly into an active Outlook Classic message draft.
   - **Plain Text Alternative**: For mailing list servers or plain-text recipients.
   - 1-click clipboard copy or `.html` file download.
+
+- 🖨️ **Dedicated Print & PDF Export Stylesheet (`@media print`)**:
+  - Distraction-free clean layout: automatically strips top navigation, edit buttons, search filters, AI action pills, and selection controls.
+  - Formatted for A4 paper and PDF conversion with intelligent page break avoidance (`break-inside: avoid`), preventing cards and records from splitting across page breaks.
+  - Institutional print header and footer showing subject heading, publication date, and item totals.
+  - Quick-access *"Imprimir / PDF"* button (`Ctrl+P` / `Cmd+P`).
 
 - ✏️ **Record Editing & Local Storage**:
   - Dual viewing modes: Visual Grid Cards and High-Density Table.

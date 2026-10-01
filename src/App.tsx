@@ -402,6 +402,29 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
         
+        {/* Dedicated Print-Only Institutional Header */}
+        <div className="hidden print:block mb-6 pb-4 border-b-2 border-[#1C1917]">
+          <div className="flex justify-between items-start">
+            <div>
+              <div className="text-[11pt] font-bold tracking-tight text-[#1E3A8A] uppercase font-mono mb-0.5">
+                LibCAS &middot; Current Awareness Service
+              </div>
+              <h1 className="font-editorial text-2xl font-bold text-[#1C1917] leading-tight">
+                Boletim de Novas Aquisições
+              </h1>
+              <p className="text-sm font-semibold text-[#9A3412] mt-1">
+                Área Temática: {subjectArea || 'Geral'}
+              </p>
+            </div>
+            <div className="text-right text-xs text-[#4B5563] font-mono leading-relaxed">
+              <p className="font-semibold text-[#111827]">
+                Data: {new Date().toLocaleDateString('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' })}
+              </p>
+              <p>Total: {filteredBooks.length} {filteredBooks.length === 1 ? 'obra' : 'obras'} listadas</p>
+            </div>
+          </div>
+        </div>
+
         {/* Curatorial Hero Banner & Batch Controls */}
         <EnrichmentBar
           totalCount={books.length}
@@ -506,6 +529,11 @@ export default function App() {
           />
         )}
 
+        {/* Dedicated Print Footer */}
+        <div className="hidden print:block mt-8 pt-4 border-t border-[#D1D5DB] text-center text-xs text-[#6B7280] font-mono">
+          Documento impresso através de LibCAS &middot; Current Awareness Service &middot; {new Date().toLocaleDateString('pt-PT')}
+        </div>
+
       </main>
 
       {/* Floating Bottom Quick Action for Email Dispatch */}
@@ -535,7 +563,7 @@ export default function App() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
             <span className="font-editorial text-sm font-bold text-[#1C1917]">LibCAS</span>
             <span className="hidden sm:inline">·</span>
-            <span>Current Awareness Service (for Libraries) · Curadoria Bibliográfica & Boletim de Aquisições</span>
+            <span>Current Awareness Service · Curadoria Bibliográfica & Boletim de Aquisições</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Google Books API</span>

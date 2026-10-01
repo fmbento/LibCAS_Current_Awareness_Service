@@ -31,20 +31,143 @@
   }
 }
 
-/* Print layout optimizations */
+/* ==========================================================================
+   DEDICATED PRINT / PDF STYLESHEET
+   Optimized for A4 paper and PDF export with crisp typography and clean breaks
+   ========================================================================== */
+
+@page {
+  size: A4 portrait;
+  margin: 12mm 15mm 15mm 15mm;
+}
+
 @media print {
-  .no-print {
+  /* Hide all interactive UI, sticky headers, modals, and auxiliary controls */
+  .no-print,
+  header,
+  nav,
+  button:not(.allow-print),
+  input,
+  select,
+  .modal-overlay,
+  .enrichment-bar-actions,
+  .book-card-actions,
+  .book-card-toggle,
+  .book-quick-links,
+  .status-badge {
     display: none !important;
   }
-  .print-only {
+
+  /* Force display of print-only headers and summaries */
+  .print-only,
+  .print\:block {
     display: block !important;
   }
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
+
+  .print\:flex {
+    display: flex !important;
   }
-  .page-break-avoid {
-    break-inside: avoid;
-    page-break-inside: avoid;
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Base print typography & background reset */
+  html, body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Prevent awkward page break splits across book cards and table rows */
+  .page-break-avoid,
+  .book-card-item,
+  article,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Editorial Card Grid layout for printing: 1-column clean vertical flow */
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Clean Book Card styling for PDF/Paper */
+  .book-card-item {
+    border: 1px solid #D1D5DB !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    padding: 12px 14px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Full text synopsis display without clamp in print */
+  .book-synopsis,
+  p.font-editorial {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    max-height: none !important;
+    color: #1F2937 !important;
+    font-size: 10pt !important;
+    line-height: 1.45 !important;
+  }
+
+  /* COTA / Shelfmark badge in high-contrast print styling */
+  .cota-badge {
+    border: 1px solid #1E3A8A !important;
+    color: #1E3A8A !important;
+    background-color: #F8FAFC !important;
+    font-weight: bold !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Crisp Book Covers for Print */
+  .book-cover-img {
+    width: 80px !important;
+    height: 115px !important;
+    object-fit: cover !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 3px !important;
+    box-shadow: none !important;
+  }
+
+  /* Links in print */
+  a {
+    text-decoration: none !important;
+    color: #1E3A8A !important;
+  }
+
+  /* High contrast table styling */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    border-bottom: 1px solid #E5E7EB !important;
+    padding: 6px 8px !important;
+  }
+
+  thead {
+    display: table-header-group !important;
   }
 }

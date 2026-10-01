@@ -21,7 +21,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   totalFiltered,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs">
+    <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 text-xs no-print">
       
       {/* Search Bar */}
       <div className="relative flex-1 max-w-md">
