@@ -1,0 +1,6 @@
+{
+  "name": "Bibliotrack - Boletim de Novas Aquisições",
+  "description": "Plataforma de enriquecimento bibliográfico (capas, sinopses, avaliações) a partir de CSV/XLS e gerador de boletins em HTML para envio por email.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

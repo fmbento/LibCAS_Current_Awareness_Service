@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Newsreader", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-parchment-50: #FCFAF6;
+  --color-parchment-100: #F7F4EE;
+  --color-parchment-200: #EBE6DF;
+  --color-parchment-300: #DCD4C6;
+  --color-ink-900: #1C1917;
+  --color-ink-800: #292524;
+  --color-ink-700: #44403C;
+  --color-ink-500: #78716C;
+  --color-terracotta: #9A3412;
+  --color-lapis: #1E3A8A;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #FBF9F5;
+    color: #1C1917;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Print layout optimizations */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .page-break-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
