@@ -1,5 +1,5 @@
-# Bibliotrack 📚 — Boletim de Novas Aquisições & Enriquecimento Bibliográfico
-> **Library Acquisitions Bulletin & Bibliographic Enrichment Platform**
+# LibCAS 📚 — Current Awareness Service
+> **Boletim de Novas Aquisições & Enriquecimento Bibliográfico para Bibliotecas**
 
 [![Language](https://img.shields.io/badge/Language-Portugu%C3%AAs%20%7C%20English-blue.svg)](#índice--table-of-contents)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -43,7 +43,7 @@
 
 ## Visão Geral
 
-O **Bibliotrack** é uma aplicação web concebida para bibliotecas e serviços de documentação universitários ou municipais. Permite carregar ficheiros bibliográficos (CSV, TSV, XLS ou XLSX) correspondentes às últimas aquisições de uma determinada área temática, enriquecer automaticamente cada registo através de múltiplos catálogos online (capa em alta resolução, sinopse informativa real, editora, páginas, cota e avaliações) e gerar um **boletim de novidades em HTML inline**, pronto a copiar e colar em qualquer cliente de correio eletrónico (Outlook, Gmail, Thunderbird, Apple Mail) para divulgação junto de investigadores, docentes e leitores.
+O **LibCAS** (*Current Awareness Service*) é uma aplicação web concebida para bibliotecas e serviços de documentação universitários ou municipais. Permite carregar ficheiros bibliográficos (CSV, TSV, XLS ou XLSX) correspondentes às últimas aquisições de uma determinada área temática, enriquecer automaticamente cada registo através de múltiplos catálogos online (capa em alta resolução, sinopse informativa real, editora, páginas, cota e avaliações) e gerar um **boletim de novidades em HTML inline**, pronto a copiar e colar em qualquer cliente de correio eletrónico (Outlook, Gmail, Thunderbird, Apple Mail) para divulgação junto de investigadores, docentes e leitores.
 
 ---
 
@@ -72,12 +72,14 @@ O **Bibliotrack** é uma aplicação web concebida para bibliotecas e serviços 
   - Deteção e descarte de textos burocráticos repetitivos (*"Obra no domínio de..."*, *"Título disponível na biblioteca..."*), assegurando que o sumário descreve o conteúdo informativo real da obra.
 
 - ✉️ **Gerador de Boletim para Email (HTML Inline & Texto Simples)**:
-  - Criação de código HTML 100% inline, testado para máxima fidelidade visual em clientes de email modernos e legados.
-  - **3 Estilos de Layout**:
-    1. **Catálogo Compacto**: Linhas organizadas com destaque para cota e ligação ao Koha OPAC.
-    2. **Grelha Editorial Moderna**: Cartões estilizados com capas em destaque, avaliação e metadados.
-    3. **Boletim Clássico Institucional**: Tipografia serifada tradicional com nota curatorial.
-  - **Versão em Texto Simples**: Para listas de distribuição ou destinatários com leitores de texto puro.
+  - Criação de código HTML 100% inline, testado e otimizado para o motor Word do **Outlook Classic**, Gmail, Apple Mail e Thunderbird.
+  - **4 Estilos de Layout**:
+    1. **Outlook (Linhas)** *(Recomendado para Outlook Classic)*: Tabelas puras com linhas divisórias horizontais nítidas e inquebráveis entre registos, caixas de COTA e ligação direta ao Koha OPAC.
+    2. **Editorial Clássico**: Tipografia tradicional serifada de boletim académico com notas curatoriais.
+    3. **Catálogo Cota**: Tabela densa de apresentação sequencial com destaque de cotas e localização.
+    4. **Revista Moderna**: Cartões visuais individuais com destaque para capas em alta resolução.
+  - **Opção "Copiar Só Registos"**: Permite copiar apenas a tabela dos livros formatada com linhas para colar no corpo de uma mensagem já iniciada no Outlook Classic.
+  - **Versão em Texto Simples**: Para mailing lists ou destinatários com leitores de texto puro.
   - Copiar com 1 clique para a área de transferência ou transferir ficheiro `.html`.
 
 - ✏️ **Edição e Gestão Manual**:
@@ -176,8 +178,8 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 
 1. **Clonar o repositório:**
    ```bash
-   git clone https://github.com/seu-utilizador/bibliotrack.git
-   cd bibliotrack
+   git clone https://github.com/seu-utilizador/libcas.git
+   cd libcas
    ```
 
 2. **Instalar as dependências:**
@@ -227,7 +229,7 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 
 ## Overview
 
-**Bibliotrack** is a specialized web application built for university, research, and public libraries. It allows librarians to upload bibliographic datasets (CSV, TSV, XLS, or XLSX) containing newly acquired books for a specific subject area, automatically enrich every record via multiple online catalog sources (full-resolution book covers, authentic synopses, publishers, page counts, call numbers, and ratings), and generate an **inline-styled HTML newsletter** ready to be copied and pasted directly into any email client (Outlook, Gmail, Thunderbird, Apple Mail) for dissemination to researchers, faculty, and patrons.
+**LibCAS** (*Current Awareness Service*) is a specialized web application built for university, research, and public libraries. It allows librarians to upload bibliographic datasets (CSV, TSV, XLS, or XLSX) containing newly acquired books for a specific subject area, automatically enrich every record via multiple online catalog sources (full-resolution book covers, authentic synopses, publishers, page counts, call numbers, and ratings), and generate an **inline-styled HTML newsletter** ready to be copied and pasted directly into any email client (Outlook, Gmail, Thunderbird, Apple Mail) for dissemination to researchers, faculty, and patrons.
 
 ---
 
@@ -256,12 +258,14 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
   - Anti-fluff filter preventing generic bureaucracy (*"Work in the field of..."*, *"Book cataloged in the library..."*), ensuring that summaries describe the actual content of the book.
 
 - ✉️ **Email Bulletin Builder (Inline HTML & Plain Text)**:
-  - Generates 100% email-client-safe inline HTML compatible with Outlook, Apple Mail, Gmail, Thunderbird, and Webmail.
-  - **3 Distinct Styles**:
-    1. **Compact Catalog**: Efficient row-based layout highlighting shelfmark (Cota) and Koha link.
-    2. **Modern Grid**: Visual magazine-style cards highlighting cover artwork and structured metadata.
-    3. **Classic Institutional Bulletin**: Traditional serif typography with curatorial notes.
-  - **Plain Text Alternative**: For mailing lists or plain-text recipients.
+  - Generates 100% email-client-safe inline HTML optimized for Microsoft Word rendering engine in **Outlook Classic**, Apple Mail, Gmail, Thunderbird, and Webmail.
+  - **4 Distinct Styles**:
+    1. **Outlook Clean Lines** *(Recommended for Outlook Classic)*: Pure table structure with crisp, unbreakable horizontal dividing lines between records, call number boxes, and direct Koha OPAC links.
+    2. **Classic Institutional Bulletin**: Traditional serif typography with curatorial notes.
+    3. **Compact Catalog**: High-density sequential table highlighting call numbers (Cota) and shelf availability.
+    4. **Modern Grid**: Visual magazine-style cards highlighting cover artwork and structured metadata.
+  - **"Copy Records Only" Option**: Copies just the formatted book table with dividing lines for pasting directly into an active Outlook Classic message draft.
+  - **Plain Text Alternative**: For mailing list servers or plain-text recipients.
   - 1-click clipboard copy or `.html` file download.
 
 - ✏️ **Record Editing & Local Storage**:
@@ -274,7 +278,7 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 
 ## Input Data Format
 
-Bibliotrack accepts raw exports from library automation systems (Koha, Aleph, Alma, DSpace, etc.). Supported delimiter auto-detection: Tab (TSV), Semicolon (`;`), and Comma (`,`).
+LibCAS accepts raw exports from library automation systems (Koha, Aleph, Alma, DSpace, etc.). Supported delimiter auto-detection: Tab (TSV), Semicolon (`;`), and Comma (`,`).
 
 Example:
 ```tsv
@@ -307,10 +311,11 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 
 ## Email Newsletter Templates
 
-1. **Compact Catalog**: Optimized for academic faculty emails where the **Shelfmark (Cota)** and **Accession Number (Registo)** must be immediate and prominent.
-2. **Modern Grid**: Visual newsletter with prominent book covers, ratings, structured synopses, and action buttons.
-3. **Classic Institutional Bulletin**: Traditional library bulletin aesthetic with serif fonts and curatorial annotations.
-4. **Plain Text**: Clean, structured text output suitable for mailing list servers and text-only email clients.
+1. **Outlook Clean Lines** *(Recommended for Outlook Classic)*: Pure table structure with crisp, unbreakable horizontal dividing lines between records, call number boxes, and direct Koha OPAC links.
+2. **Classic Institutional Bulletin**: Traditional serif typography with curatorial notes.
+3. **Compact Catalog**: High-density sequential table highlighting call numbers (Cota) and shelf availability.
+4. **Modern Grid**: Visual magazine-style cards highlighting cover artwork and structured metadata.
+5. **Plain Text**: Clean, structured text output suitable for mailing list servers and text-only email clients.
 
 ---
 
@@ -361,8 +366,8 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/bibliotrack.git
-   cd bibliotrack
+   git clone https://github.com/your-username/libcas.git
+   cd libcas
    ```
 
 2. **Install dependencies:**

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EnrichedBook, BulletinSettings, EmailTemplateStyle } from '../types/bibliographic';
 import {
   generateEmailHtml,
+  generateRecordsOnlyHtml,
   generatePlainTextEmail,
   copyHtmlToClipboard,
 } from '../services/emailHtmlGenerator';
@@ -46,7 +47,7 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
       'Para requisitar ou reservar qualquer uma das obras, anote a respectiva COTA e dirija-se ao balcão de empréstimo ou responda a este email indicando o seu número de leitor.',
     libraryEmail: 'biblioteca@instituicao.pt',
     libraryWebsite: 'https://catalogo.biblioteca.pt',
-    style: 'classic',
+    style: 'outlook_clean',
     showRatings: true,
     showSynopsis: true,
     showCallNumber: true,
@@ -75,6 +76,7 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
 
   const selectedBooks = books.filter((b) => b.selectedForEmail);
   const renderedHtml = generateEmailHtml(books, settings);
+  const recordsOnlyHtml = generateRecordsOnlyHtml(books, settings);
   const plainText = generatePlainTextEmail(books, settings);
 
   const handleCopyRichHtml = async () => {
@@ -82,6 +84,18 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
     if (success) {
       setIsCopied(true);
       setCopiedType('html');
+      setTimeout(() => {
+        setIsCopied(false);
+        setCopiedType(null);
+      }, 3500);
+    }
+  };
+
+  const handleCopyRecordsOnly = async () => {
+    const success = await copyHtmlToClipboard(recordsOnlyHtml, plainText);
+    if (success) {
+      setIsCopied(true);
+      setCopiedType('records');
       setTimeout(() => {
         setIsCopied(false);
         setCopiedType(null);
@@ -162,12 +176,36 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
                 Gerador de Boletim para Email
               </h2>
               <p className="text-xs text-[#78716C]">
-                {selectedBooks.length} obras selecionadas · Pronto para colar no Gmail, Outlook, Apple Mail ou Thunderbird
+                {selectedBooks.length} obras selecionadas · Otimizado para Outlook Classic, Gmail e Apple Mail
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Secondary Copy Button: Apenas Registos com Linhas */}
+            <button
+              type="button"
+              onClick={handleCopyRecordsOnly}
+              className={`flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-all border ${
+                isCopied && copiedType === 'records'
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                  : 'bg-white hover:bg-[#F5F2EB] text-[#1C1917] border-[#D6D3CD]'
+              }`}
+              title="Copia a tabela de livros com linhas divisórias para colar no corpo de um email no Outlook Classic"
+            >
+              {isCopied && copiedType === 'records' ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-600" />
+                  <span>Registos Copiados!</span>
+                </>
+              ) : (
+                <>
+                  <FileText className="w-4 h-4 text-[#78716C]" />
+                  <span>Copiar Só Registos</span>
+                </>
+              )}
+            </button>
+
             {/* Primary Action Button: Copiar HTML para Email */}
             <button
               type="button"
@@ -177,17 +215,17 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
                   ? 'bg-emerald-700 text-white'
                   : 'bg-[#9A3412] hover:bg-[#782A0E] text-white'
               }`}
-              title="Copia formato HTML rico. Basta colar (Ctrl+V) no corpo do email"
+              title="Copia o boletim completo em HTML rico. Basta colar (Ctrl+V) no email"
             >
               {isCopied && copiedType === 'html' ? (
                 <>
                   <Check className="w-4 h-4" />
-                  <span>Copiado para o Email!</span>
+                  <span>Boletim Copiado!</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-4 h-4" />
-                  <span>Copiar HTML para Email</span>
+                  <span>Copiar Boletim Completo</span>
                 </>
               )}
             </button>
@@ -207,10 +245,14 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>
-                <strong>Pronto a enviar!</strong> O boletim formatado foi copiado para a área de transferência. Abra o seu email (Gmail, Outlook, etc.) e prima <kbd className="px-1.5 py-0.5 bg-white border border-emerald-300 rounded font-mono text-[10px]">Ctrl+V</kbd> ou <kbd className="px-1.5 py-0.5 bg-white border border-emerald-300 rounded font-mono text-[10px]">Cmd+V</kbd>.
+                <strong>Pronto a colar no Outlook Classic!</strong>{' '}
+                {copiedType === 'records'
+                  ? 'A lista de obras com linhas divisórias foi copiada para a área de transferência.'
+                  : 'O boletim completo com linhas divisórias e formatação preservada foi copiado.'}{' '}
+                No seu email, prima <kbd className="px-1.5 py-0.5 bg-white border border-emerald-300 rounded font-mono text-[10px]">Ctrl+V</kbd> para colar.
               </span>
             </div>
-            <span className="text-[11px] text-emerald-700 font-medium">Imagens e estilos preservados</span>
+            <span className="text-[11px] text-emerald-700 font-medium">Linhas &amp; tabelas intactas</span>
           </div>
         )}
 
@@ -231,25 +273,53 @@ export const EmailBuilderModal: React.FC<EmailBuilderModalProps> = ({
               <label className="block font-semibold text-[#44403C] mb-1.5">
                 Estilo Visual do Boletim
               </label>
-              <div className="grid grid-cols-3 gap-1.5 bg-[#F7F4EE] p-1 rounded-lg border border-[#E5E0D8]">
+              <div className="grid grid-cols-2 gap-1.5 bg-[#F7F4EE] p-1.5 rounded-lg border border-[#E5E0D8]">
                 {(
                   [
-                    { id: 'classic', label: 'Editorial' },
-                    { id: 'modern_grid', label: 'Revista' },
-                    { id: 'compact_catalog', label: 'Cota' },
-                  ] as { id: EmailTemplateStyle; label: string }[]
+                    {
+                      id: 'outlook_clean',
+                      label: 'Outlook (Linhas)',
+                      desc: 'Linhas horizontais nítidas para Outlook Classic & Webmail',
+                      badge: '100% Outlook',
+                    },
+                    {
+                      id: 'classic',
+                      label: 'Editorial Clássico',
+                      desc: 'Tipografia serifada de boletim académico',
+                    },
+                    {
+                      id: 'compact_catalog',
+                      label: 'Catálogo Cota',
+                      desc: 'Tabela densa focada na cota e disponibilidade',
+                    },
+                    {
+                      id: 'modern_grid',
+                      label: 'Revista Moderna',
+                      desc: 'Cartões individuais com capas em destaque',
+                    },
+                  ] as { id: EmailTemplateStyle; label: string; desc: string; badge?: string }[]
                 ).map((st) => (
                   <button
                     key={st.id}
                     type="button"
                     onClick={() => setSettings({ ...settings, style: st.id })}
-                    className={`py-1 text-[11px] font-medium rounded transition-colors ${
+                    className={`p-2 text-left rounded-md transition-all ${
                       settings.style === st.id
-                        ? 'bg-white text-[#1C1917] shadow-2xs font-semibold'
-                        : 'text-[#78716C] hover:text-[#1C1917]'
+                        ? 'bg-white text-[#1C1917] shadow-2xs border border-[#CBD5E1] font-semibold ring-1 ring-[#9A3412]'
+                        : 'text-[#78716C] hover:text-[#1C1917] hover:bg-white/60 border border-transparent'
                     }`}
                   >
-                    {st.label}
+                    <div className="flex items-center justify-between gap-1 text-[11px]">
+                      <span className="font-bold">{st.label}</span>
+                      {st.badge && (
+                        <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1 py-0.2 rounded font-bold shrink-0">
+                          {st.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[10px] text-[#78716C] font-normal leading-tight mt-0.5">
+                      {st.desc}
+                    </div>
                   </button>
                 ))}
               </div>

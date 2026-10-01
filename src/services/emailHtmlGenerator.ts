@@ -51,27 +51,6 @@ export function resolveOpacUrl(book: EnrichedBook, settings: BulletinSettings): 
 }
 
 /**
- * Generates an email-safe, inline-styled HTML newsletter for email clients
- */
-export function generateEmailHtml(books: EnrichedBook[], settings: BulletinSettings): string {
-  const selectedBooks = books.filter((b) => b.selectedForEmail);
-  const totalCount = selectedBooks.length;
-  const introParagraphs = settings.editorialIntroduction
-    .split(/\n\n+/)
-    .map((p) => `<p style="margin: 0 0 12px 0; font-family: 'Georgia', serif; font-size: 15px; line-height: 1.6; color: #292524;">${p.replace(/\n/g, '<br/>')}</p>`)
-    .join('');
-
-  const loanInfo = settings.loanInstructions
-    ? `<div style="background-color: #F5F2EB; border-left: 3px solid #78350F; padding: 12px 16px; margin: 20px 0; font-family: sans-serif; font-size: 13px; color: #44403C; line-height: 1.5;">
-        <strong style="color: #1C1917;">Informação de Empréstimo & Consulta:</strong><br/>
-        ${settings.loanInstructions.replace(/\n/g, '<br/>')}
-      </div>`
-    : '';
-
-  // Render books according to selected layout style
-  let booksContent = '';
-
-/**
  * Renders the table content for the selected books according to the chosen template style
  */
 export function renderBooksTableContent(selectedBooks: EnrichedBook[], settings: BulletinSettings): string {
@@ -505,7 +484,7 @@ export function generateRecordsOnlyHtml(books: EnrichedBook[], settings: Bulleti
   const selectedBooks = books.filter((b) => b.selectedForEmail);
   const booksContent = renderBooksTableContent(selectedBooks, settings);
 
-  return `<!-- Bibliotrack: Lista de Obras Formatada para Outlook Classic & Webmail -->
+  return `<!-- LibCAS: Lista de Obras Formatada para Outlook Classic & Webmail -->
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 620px; width: 100%; border-collapse: collapse; font-family: Calibri, 'Segoe UI', Arial, sans-serif; color: #1C1917;">
   <tr>
     <td style="padding: 10px 0 20px 0; vertical-align: top;">

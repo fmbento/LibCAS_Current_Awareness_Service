@@ -712,7 +712,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Bibliotrack server running on port ${PORT}`);
+    console.log(`LibCAS (Current Awareness Service) server running on port ${PORT}`);
   });
 }
 

@@ -532,10 +532,10 @@ export default function App() {
       {/* Institutional Editorial Footer */}
       <footer className="mt-12 border-t border-[#E7E3DC] bg-[#FCFAF6] py-8 text-xs text-[#78716C] no-print">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-editorial text-sm font-bold text-[#1C1917]">Bibliotrack</span>
-            <span>·</span>
-            <span>Curadoria Bibliográfica & Enriquecimento de Catálogo</span>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+            <span className="font-editorial text-sm font-bold text-[#1C1917]">LibCAS</span>
+            <span className="hidden sm:inline">·</span>
+            <span>Current Awareness Service (for Libraries) · Curadoria Bibliográfica & Boletim de Aquisições</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Google Books API</span>

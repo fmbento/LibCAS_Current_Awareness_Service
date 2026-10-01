@@ -28,15 +28,25 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-30 bg-[#FCFAF6]/95 backdrop-blur-md border-b border-[#E7E3DC] px-6 py-3.5 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Zone 1: Brand Wordmark (Single text element) */}
+        {/* Zone 1: Brand Wordmark */}
         <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="#" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 rounded bg-[#1C1917] flex items-center justify-center text-[#FBF9F5] shadow-sm">
               <BookOpen className="w-4 h-4 text-[#D6CEBE]" />
             </div>
-            <span className="font-editorial text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#9A3412] transition-colors">
-              Bibliotrack
-            </span>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-1.5">
+                <span className="font-editorial text-xl font-bold tracking-tight text-[#1C1917] group-hover:text-[#9A3412] transition-colors">
+                  LibCAS
+                </span>
+                <span className="hidden sm:inline-block text-[10px] text-[#78716C] font-mono tracking-tight bg-[#EFECE6] px-1.5 py-0.5 rounded border border-[#E2DDD5]">
+                  v2.0
+                </span>
+              </div>
+              <span className="text-[10px] text-[#78716C] font-medium leading-none -mt-0.5 hidden sm:block">
+                Current Awareness Service
+              </span>
+            </div>
           </a>
         </div>
 
