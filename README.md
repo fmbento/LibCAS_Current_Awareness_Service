@@ -8,6 +8,15 @@
 [![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Express](https://img.shields.io/badge/Express-4.21-000000?logo=express&logoColor=white)](https://expressjs.com/)
 
+## Visão Geral
+
+O **LibCAS** (*Current Awareness Service*) é uma aplicação web concebida para bibliotecas e serviços de documentação universitários ou municipais. Permite carregar ficheiros bibliográficos (CSV, TSV, XLS ou XLSX) correspondentes às últimas aquisições de uma determinada área temática, enriquecer automaticamente cada registo através de múltiplos catálogos online (capa em alta resolução, sinopse informativa real, editora, páginas, cota e avaliações) e gerar um **boletim de novidades em HTML inline**, pronto a copiar e colar em qualquer cliente de correio eletrónico (Outlook, Gmail, Thunderbird, Apple Mail) para divulgação junto de investigadores, docentes e leitores.
+
+---
+## Overview
+
+**LibCAS** (*Current Awareness Service*) is a specialized web application built for university, research, and public libraries. It allows librarians to upload bibliographic datasets (CSV, TSV, XLS, or XLSX) containing newly acquired books for a specific subject area, automatically enrich every record via multiple online catalog sources (full-resolution book covers, authentic synopses, publishers, page counts, call numbers, and ratings), and generate an **inline-styled HTML newsletter** ready to be copied and pasted directly into any email client (Outlook, Gmail, Thunderbird, Apple Mail) for dissemination to researchers, faculty, and patrons.
+
 ---
 <img width="835" height="512" alt="image" src="https://github.com/user-attachments/assets/2e6fc622-6076-480a-9ffb-69ae12c87362" />
 <img width="827" height="512" alt="image" src="https://github.com/user-attachments/assets/3773be75-3262-47bb-a3d5-2afe420dc8d7" />
@@ -40,12 +49,6 @@
 ---
 
 # Versão em Português
-
-## Visão Geral
-
-O **LibCAS** (*Current Awareness Service*) é uma aplicação web concebida para bibliotecas e serviços de documentação universitários ou municipais. Permite carregar ficheiros bibliográficos (CSV, TSV, XLS ou XLSX) correspondentes às últimas aquisições de uma determinada área temática, enriquecer automaticamente cada registo através de múltiplos catálogos online (capa em alta resolução, sinopse informativa real, editora, páginas, cota e avaliações) e gerar um **boletim de novidades em HTML inline**, pronto a copiar e colar em qualquer cliente de correio eletrónico (Outlook, Gmail, Thunderbird, Apple Mail) para divulgação junto de investigadores, docentes e leitores.
-
----
 
 ## Funcionalidades Principais
 
@@ -226,12 +229,6 @@ biblionumber	title	author	isbn	publicationyear	itemcallnumber
 ---
 
 # English Version
-
-## Overview
-
-**LibCAS** (*Current Awareness Service*) is a specialized web application built for university, research, and public libraries. It allows librarians to upload bibliographic datasets (CSV, TSV, XLS, or XLSX) containing newly acquired books for a specific subject area, automatically enrich every record via multiple online catalog sources (full-resolution book covers, authentic synopses, publishers, page counts, call numbers, and ratings), and generate an **inline-styled HTML newsletter** ready to be copied and pasted directly into any email client (Outlook, Gmail, Thunderbird, Apple Mail) for dissemination to researchers, faculty, and patrons.
-
----
 
 ## Key Features
 
